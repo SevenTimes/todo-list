@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <header><h1>TODO LIST</h1></header>
+    <div class="wrapper">
+      <aside class="project-list">
+        <h2>Projects</h2>
+        <div id="project-wrapper"></div>
+        <button id="add-project">Add Project</button>
+      </aside>
+      <main id="task-list">
+        <div class="task">
+          <h1>Title</h1>
+          <p>Description</p>
+          <div>
+            <span>Due Date</span>
+            <span>Priority</span>
+          </div>
+        </div>
+        <button
+          id="open-modal"
+          onclick="document.getElementById('add-task-modal').style.display='block'"
+        >
+          Add Task
+        </button>
+        <div id="add-task-modal">
+          <div id="modal-content">
+            <div>
+              <label>Title<input type="text" name="title" id="title" /></label>
+              <label
+                >Description<input
+                  type="text"
+                  name="description"
+                  id="description"
+              /></label>
+              <label
+                >Due Date<input
+                  type="datetime-local"
+                  name="dueDate"
+                  id="dueDate"
+              /></label>
+              <span
+                class="close"
+                onclick="document.getElementById('add-task-modal').style.display='none'"
+                >&times;</span
+              >
+              <fieldset>
+                <legend>Priority</legend>
+                <label
+                  ><input
+                    type="radio"
+                    name="priority"
+                    id="low"
+                    value="low"
+                    checked
+                  />Low</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="priority"
+                    id="medium"
+                    value="medium"
+                  />Medium</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="priority"
+                    id="high"
+                    value="high"
+                  />High</label
+                >
+              </fieldset>
+              <button id="add-task">Add Task</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
