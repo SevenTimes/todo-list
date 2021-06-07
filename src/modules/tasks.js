@@ -10,10 +10,11 @@ class Task {
 }
 
 function updateTaskList() {
+  const taskList = document.getElementById('task-list');
+  taskList.innerHTML = '';
   defaultProject.forEach((task) => {
-    const taskList = document.getElementById('task-list');
     const newTask = document.createElement('div');
-    newTask.classList.add('task');
+    newTask.classList.add('task', `${task.priority}`);
 
     const title = document.createElement('h1');
     title.innerText = task.title;
@@ -26,9 +27,6 @@ function updateTaskList() {
     const date = document.createElement('span');
     date.innerText = task.dueDate;
     div.appendChild(date);
-    const priority = document.createElement('span');
-    priority.innerText = task.priority;
-    div.appendChild(priority);
 
     newTask.appendChild(div);
     taskList.appendChild(newTask);

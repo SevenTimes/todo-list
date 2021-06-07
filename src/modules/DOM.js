@@ -1,5 +1,6 @@
 import { Task, updateTaskList } from './tasks';
-import { defaultProject } from '../index';
+import { defaultProject, projectList } from '../index';
+import { Project, updateProjectList } from './project';
 
 const title = document.getElementById('title');
 const description = document.getElementById('description');
@@ -26,5 +27,13 @@ export default (function () {
     date.value = '';
 
     updateTaskList();
+  });
+
+  const addProjectBtn = document.getElementById('add-project');
+  addProjectBtn.addEventListener('click', () => {
+    const projectTitle = prompt('Enter project name', 'New project');
+    const newProject = new Project(projectTitle);
+    projectList.push(newProject);
+    updateProjectList();
   });
 })();
