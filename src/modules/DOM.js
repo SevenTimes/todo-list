@@ -1,6 +1,6 @@
 import { Task, updateTaskList } from './tasks';
 import { defaultProject, projectList } from '../index';
-import { Project, updateProjectList } from './project';
+import { Project, updateProjectList, setActiveProject } from './project';
 
 const title = document.getElementById('title');
 const description = document.getElementById('description');
