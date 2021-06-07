@@ -10,18 +10,20 @@
   <body>
     <header><h1>TODO LIST</h1></header>
     <div class="wrapper">
-      <aside class="project-list">
+      <aside class="project-wrapper">
         <h2>Projects</h2>
-        <div id="project-wrapper"></div>
+        <div id="project-list"></div>
         <button id="add-project">Add Project</button>
       </aside>
-      <main id="task-list">
-        <div class="task">
-          <h1>Title</h1>
-          <p>Description</p>
-          <div>
-            <span>Due Date</span>
-            <span>Priority</span>
+      <main id="task-wrapper">
+        <div id="task-list">
+          <div class="task">
+            <h1>Title</h1>
+            <p>Description</p>
+            <div>
+              <span>Due Date</span>
+              <span>Priority</span>
+            </div>
           </div>
         </div>
         <button
@@ -33,12 +35,15 @@
         <div id="add-task-modal">
           <div id="modal-content">
             <div>
-              <label>Title<input type="text" name="title" id="title" /></label>
+              <label
+                >Title<input type="text" name="title" id="title" required
+              /></label>
               <label
                 >Description<input
                   type="text"
                   name="description"
                   id="description"
+                  required
               /></label>
               <label
                 >Due Date<input
