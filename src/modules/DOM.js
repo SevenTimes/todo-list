@@ -7,8 +7,8 @@ const description = document.getElementById('description');
 const date = document.getElementById('dueDate');
 
 export default (function () {
-  const addTaskBtn = document.getElementById('add-task');
-  addTaskBtn.addEventListener('click', () => {
+  const form = document.getElementById('form');
+  form.addEventListener('submit', function (event) {
     const priority = document.querySelector(
       'input[name="priority"]:checked'
     ).value;
@@ -25,7 +25,7 @@ export default (function () {
     title.value = '';
     description.value = '';
     date.value = '';
-
+    event.preventDefault();
     updateTaskList();
   });
 
