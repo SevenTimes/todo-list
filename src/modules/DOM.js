@@ -1,6 +1,6 @@
 import { Task, updateTaskList } from './tasks';
-import { defaultProject, projectList } from '../index';
-import { Project, updateProjectList, setActiveProject } from './project';
+import { currentProject, projectList } from './init';
+import { Project, updateProjectList } from './project';
 
 const title = document.getElementById('title');
 const description = document.getElementById('description');
@@ -19,7 +19,7 @@ export default (function () {
       date.value,
       priority
     );
-    defaultProject.push(newTask);
+    currentProject.tasks.push(newTask);
     document.getElementById('add-task-modal').style.display = 'none';
 
     title.value = '';

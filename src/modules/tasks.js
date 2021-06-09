@@ -1,4 +1,4 @@
-import { defaultProject } from '..';
+import { currentProject } from './init';
 
 class Task {
   constructor(title, description, dueDate, priority) {
@@ -12,25 +12,27 @@ class Task {
 function updateTaskList() {
   const taskList = document.getElementById('task-list');
   taskList.innerHTML = '';
-  defaultProject.forEach((task) => {
-    const newTask = document.createElement('div');
-    newTask.classList.add('task', `${task.priority}`);
+  if (currentProject.tasks.length > 0) {
+    currentProject.tasks.forEach((task) => {
+      const newTask = document.createElement('div');
+      newTask.classList.add('task', `${task.priority}`);
 
-    const title = document.createElement('h1');
-    title.innerText = task.title;
-    newTask.appendChild(title);
-    const description = document.createElement('p');
-    description.innerText = task.description;
-    newTask.appendChild(description);
+      const title = document.createElement('h1');
+      title.innerText = task.title;
+      newTask.appendChild(title);
+      const description = document.createElement('p');
+      description.innerText = task.description;
+      newTask.appendChild(description);
 
-    const div = document.createElement('div');
-    const date = document.createElement('span');
-    date.innerText = task.dueDate;
-    div.appendChild(date);
+      const div = document.createElement('div');
+      const date = document.createElement('span');
+      date.innerText = task.dueDate;
+      div.appendChild(date);
 
-    newTask.appendChild(div);
-    taskList.appendChild(newTask);
-  });
+      newTask.appendChild(div);
+      taskList.appendChild(newTask);
+    });
+  }
 }
 
 export { Task, updateTaskList };

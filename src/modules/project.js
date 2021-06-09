@@ -1,4 +1,5 @@
-import { projectList, currentProject } from '..';
+import { projectList, currentProject } from './init';
+import { updateTaskList } from './tasks';
 
 export class Project {
   constructor(title) {
@@ -9,9 +10,9 @@ export class Project {
 
 export function updateProjectList() {
   const projContainer = document.getElementById('project-list');
-  let active;
-  if (document.querySelector('.active') !== null) {
-    active = document.querySelector('.active').id;
+  let activeId;
+  if (document.querySelector('.active')) {
+    activeId = document.querySelector('.active').id;
   }
   projContainer.innerHTML = '';
   projectList.forEach((project, index) => {
@@ -21,10 +22,10 @@ export function updateProjectList() {
     newProject.id = `data-index-${index}`;
     projContainer.appendChild(newProject);
   });
-  if (document.getElementById(active) !== null) {
-    document.getElementById(active).className += ' active';
-  }
   setActiveProject();
+  if (activeId !== undefined) {
+    document.getElementById(activeId).className += ' active';
+  }
 }
 
 export function setActiveProject() {
@@ -37,7 +38,8 @@ export function setActiveProject() {
       e.target.className += ' active';
       let projectId = e.target.id;
       currentProject = projectList[`${projectId.slice(11)}`];
-      console.log(currentProject);
+      updateTaskList();
+      return currentProject;
     });
   }
 }
