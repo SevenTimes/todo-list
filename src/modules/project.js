@@ -1,4 +1,5 @@
 import { projectList, currentProject } from './init';
+import { saveToLocalStorage } from './saveToLocal';
 import { updateTaskList } from './tasks';
 
 export class Project {
@@ -26,6 +27,7 @@ export function updateProjectList() {
   if (activeId !== undefined) {
     document.getElementById(activeId).className += ' active';
   }
+  saveToLocalStorage();
 }
 
 export function setActiveProject() {

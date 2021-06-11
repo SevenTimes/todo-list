@@ -1,4 +1,5 @@
 import { currentProject } from './init';
+import { saveToLocalStorage } from './saveToLocal';
 
 class Task {
   constructor(title, description, dueDate, priority) {
@@ -63,6 +64,7 @@ function updateTaskList() {
       taskList.appendChild(newTask);
     });
   }
+  saveToLocalStorage();
 }
 
 export { Task, updateTaskList };
