@@ -17,10 +17,27 @@ export function updateProjectList() {
   }
   projContainer.innerHTML = '';
   projectList.forEach((project, index) => {
-    const newProject = document.createElement('button');
+    const newProject = document.createElement('div');
     newProject.classList.add('project');
     newProject.innerText = project.title;
     newProject.id = `data-index-${index}`;
+
+    if (index !== 0) {
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('delete');
+      deleteBtn.innerText = 'DEL';
+      deleteBtn.addEventListener('click', (e) => {
+        if (e.target.parentNode.classList.contains('active')) {
+          e.target.parentNode.classList.remove('active');
+          e.target.parentNode.previousElementSibling.className += ' active';
+        }
+        const id = e.target.parentNode.id.slice(11);
+        projectList.splice(id, 1);
+        updateProjectList();
+      });
+      newProject.appendChild(deleteBtn);
+    }
+
     projContainer.appendChild(newProject);
   });
   setActiveProject();
@@ -34,14 +51,16 @@ export function setActiveProject() {
   let activeProject = document.querySelectorAll('.project');
   for (let i = 0; i < activeProject.length; i++) {
     activeProject[i].addEventListener('click', (e) => {
-      for (let i = 0; i < activeProject.length; i++) {
-        activeProject[i].classList.remove('active');
+      if (e.target === e.currentTarget) {
+        for (let i = 0; i < activeProject.length; i++) {
+          activeProject[i].classList.remove('active');
+        }
+        e.target.className += ' active';
+        let projectId = e.target.id;
+        currentProject = projectList[`${projectId.slice(11)}`];
+        updateTaskList();
+        return currentProject;
       }
-      e.target.className += ' active';
-      let projectId = e.target.id;
-      currentProject = projectList[`${projectId.slice(11)}`];
-      updateTaskList();
-      return currentProject;
     });
   }
 }
