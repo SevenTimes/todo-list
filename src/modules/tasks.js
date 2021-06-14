@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { currentProject } from './init';
 import { saveToLocalStorage } from './saveToLocal';
 
@@ -27,9 +28,12 @@ function updateTaskList() {
       newTask.appendChild(description);
 
       const div = document.createElement('div');
-      const date = document.createElement('span');
-      date.innerText = task.dueDate;
-      div.appendChild(date);
+
+      if (task.dueDate) {
+        const date = document.createElement('span');
+        date.innerText = format(new Date(task.dueDate), 'dd.MM H:m');
+        div.appendChild(date);
+      }
 
       const deleteBtn = document.createElement('button');
       deleteBtn.innerText = 'DEL';
