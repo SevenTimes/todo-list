@@ -28,8 +28,11 @@ export function updateProjectList() {
       deleteBtn.innerText = 'DEL';
       deleteBtn.addEventListener('click', (e) => {
         if (e.target.parentNode.classList.contains('active')) {
+          const prev = e.target.parentNode.previousElementSibling;
           e.target.parentNode.classList.remove('active');
-          e.target.parentNode.previousElementSibling.className += ' active';
+          prev.className += ' active';
+          currentProject = projectList[`${prev.id.slice(11)}`];
+          updateTaskList();
         }
         const id = e.target.parentNode.id.slice(11);
         projectList.splice(id, 1);
