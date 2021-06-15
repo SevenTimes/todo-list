@@ -29,11 +29,32 @@ export default (function () {
     updateTaskList();
   });
 
+  const projectInput = document.getElementById('new-project-input');
+  const revealProjectInput = document.getElementById('reveal-project-input');
+  const hideProjectInput = document.getElementById('hide-project-input');
+  const projectName = document.getElementById('project-name');
+
+  function revealInput() {
+    projectInput.style.display = 'block';
+    revealProjectInput.style.display = 'none';
+    projectName.focus();
+  }
+
+  function hideInput() {
+    projectInput.style.display = 'none';
+    revealProjectInput.style.display = 'block';
+    projectName.value = '';
+  }
+
+  revealProjectInput.addEventListener('click', revealInput);
+  hideProjectInput.addEventListener('click', hideInput);
+
   const addProjectBtn = document.getElementById('add-project');
   addProjectBtn.addEventListener('click', () => {
-    const projectTitle = prompt('Enter project name', 'New project');
+    const projectTitle = projectName.value;
     const newProject = new Project(projectTitle);
     projectList.push(newProject);
+    hideInput();
     updateProjectList();
   });
 })();
