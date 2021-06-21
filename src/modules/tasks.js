@@ -36,7 +36,8 @@ function updateTaskList() {
       }
 
       const deleteBtn = document.createElement('button');
-      deleteBtn.innerText = 'DEL';
+      deleteBtn.classList.add('material-icons', 'delete-task');
+      deleteBtn.innerText = 'delete_filled';
       deleteBtn.addEventListener('click', () => {
         currentProject.tasks.splice(index, 1);
         updateTaskList();

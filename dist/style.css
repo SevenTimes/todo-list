@@ -10,6 +10,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 3px 3px 5px black;
 }
 
 .wrapper {
@@ -23,10 +24,46 @@ header {
   width: 15vw;
   background-color: #b4b4b4;
   text-align: center;
+  box-shadow: 3px 0 10px black;
+}
+
+#reveal-project-input {
+  height: 25px;
 }
 
 #new-project-input {
   display: none;
+  width: 100%;
+  height: 25px;
+}
+
+#project-name {
+  padding: 0;
+  max-width: 60%;
+}
+
+#project-name:focus {
+  outline: transparent;
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+#hide-project-input,
+#add-project {
+  width: 20%;
+  padding: 0;
+  border: none;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+#hide-project-input {
+  background-color: tomato;
+}
+
+#add-project {
+  background-color: yellowgreen;
 }
 
 .task {
@@ -34,12 +71,13 @@ header {
   margin-left: 30px;
   padding: 5px;
   border: 1px solid #000;
+  min-width: 100px;
 }
 
 #open-modal {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 30px;
+  right: 30px;
   padding: 20px;
 }
 
@@ -60,7 +98,19 @@ header {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #000;
-  width: 80%;
+  width: 20vw;
+}
+
+#form fieldset {
+  width: 10vw;
+}
+
+#form input {
+  margin-bottom: 10px;
+}
+
+#form button {
+  margin-top: 10px;
 }
 
 .close {
@@ -77,6 +127,28 @@ header {
   cursor: pointer;
 }
 
+#task-list {
+  display: flex;
+}
+
+.delete-task {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.task > div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.task input {
+  width: 28px;
+  height: 30px;
+}
+
 .low {
   background-color: rgba(0, 128, 0, 0.5);
 }
@@ -89,14 +161,34 @@ header {
   background-color: rgba(255, 0, 0, 0.5);
 }
 
+.completed {
+  background-color: rgba(128, 128, 128, 0.5);
+  opacity: 0.4;
+}
+
 .project {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   height: 25px;
-  margin-bottom: 5px;
   border: none;
   cursor: pointer;
   background-color: inherit;
   opacity: 0.6;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.5);
+  border: none;
+  border-left: 1px solid black;
 }
 
 .project:hover,

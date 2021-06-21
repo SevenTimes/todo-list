@@ -35,7 +35,7 @@ export default (function () {
   const projectName = document.getElementById('project-name');
 
   function revealInput() {
-    projectInput.style.display = 'block';
+    projectInput.style.display = 'flex';
     revealProjectInput.style.display = 'none';
     projectName.focus();
   }
